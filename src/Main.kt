@@ -1,50 +1,52 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+fun saudacao1() {
+    println("Olá, bem-vindo ao Kotlin!")
+}
+
+fun saudacao2(nome: String) {
+    println("Olá, $nome! Seja bem-vindo.")
+}
+
+fun somar(a: Int, b: Int): Int {
+    return a + b
+}
+
+inline fun mensagem() {
+    println("Esta é uma função inline!")
+}
+fun operar(numero: Int, operacao: (Int) -> Int): Int {
+    return operacao(numero)
+}
+
 fun main() {
-    for (i in 1..5) { // De 1 até 5
-        println("Número FOR: $i")
-    }
+    saudacao1()
 
     println("\n------------------------------------------------------------\n")
 
-    var contador = 1
-    while (contador <= 5) {
-        println("Número WHILE: $contador")
-        contador++ // Incrementa 1 a cada repetição
-    }
+    saudacao2("Maria")
+    saudacao2("João")
 
 
     println("\n------------------------------------------------------------\n")
 
-    for (i in 5 downTo 1) { // Conta de 5 até 1
-        println("Contagem FOR: $i")
-    }
-    println("Boom! 🚀")
+    val resultado1 = somar(10, 5)
+    println("Resultado da soma: $resultado1")
 
     println("\n------------------------------------------------------------\n")
 
-    var numero = 5
-    while (numero > 0) {
-        println("Contagem WHILE: $numero")
-        numero-- // Decrementa 1 a cada repetição
-    }
-    println("Lançamento! 🚀")
+    mensagem()
 
     println("\n------------------------------------------------------------\n")
 
-    var soma = 0
-    for (i in 1..5) {
-        soma += i // soma = soma + i
-    }
-    println("A soma dos números de 1 a 5 é: $soma")
+    //Exemplo de Expressão Lambda
+    val dobrar: (Int) -> Int = { numero -> numero * 2 }
+    println("O dobro de 5 é: ${dobrar(5)}")
+
 
     println("\n------------------------------------------------------------\n")
 
-    var soma1 = 0
-    var numero1 = 1
-    while (numero1 <= 5) {
-        soma1 += numero1
-        numero1++ // Incrementa o número
-    }
-    println("A soma dos números de 1 a 5 é: $soma1")
+    val resultado2 = operar(4) { it * 3 }
+    println("O resultado é: $resultado2")
+
 }
