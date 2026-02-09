@@ -1,40 +1,46 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val a = 10
-    val b = 3
-    println("Soma: ${a + b}") // 13
-    println("Subtração: ${a - b}") // 7
-    println("Multiplicação: ${a * b}") // 30
-    println("Divisão: ${a / b}") // 3 (Inteiro)
-    println("Módulo: ${a % b}") // 1 (Resto da divisão)
+    val idade = 18
+    if (idade < 12) {
+        println("Criança")
+    } else if (idade < 18) {
+        println("Adolescente")
+    } else {
+        println("Adulto")
+    }
 
     println("\n------------------------------------------------------------\n")
 
-    val idade = 25
-    val temCarteira = true
-    println("Pode dirigir? ${(idade >= 18) && temCarteira}") // true
-    println("Precisa renovar CNH? ${(idade >= 18) || temCarteira}") // true
-    println("Não tem carteira: ${!temCarteira}") // false
-
-
+    val numero = 10
+    val resultado = if (numero % 2 == 0) "Par" else "Ímpar"
+    println("O número é $resultado")
 
     println("\n------------------------------------------------------------\n")
 
-    val resultado = 10 + 5 * 2 // Multiplicação tem prioridade
-    println(resultado) // 20
-    val resultadoCorreto = (10 + 5) * 2 // Parênteses alteram a ordem
-    println(resultadoCorreto) // 30
+    val dia = 3
+    val nomeDoDia = when (dia) {
+        1 -> "Domingo"
+        2 -> "Segunda-feira"
+        3 -> "Terça-feira"
+        4 -> "Quarta-feira"
+        5 -> "Quinta-feira"
+        6 -> "Sexta-feira"
+        7 -> "Sábado"
+        else -> "Dia inválido"
+    }
+    println("O dia correspondente é: $nomeDoDia")
 
     println("\n------------------------------------------------------------\n")
 
-    val x = 10
-    val y = 5
-    val z = 2
-    val expressao1 = x > y && y > z // true && true → true
-    val expressao2 = x > y || x < z // true || false → true
-    val expressao3 = !(x < y) // !(false) → true
-    println("Expressão 1: $expressao1") // true
-    println("Expressão 2: $expressao2") // true
-    println("Expressão 3: $expressao3") // true
+    val valor: Any = "cinco" // Pode ser qualquer tipo de dado
+    val resultado1 = when (valor) {
+        is Int -> "O número é um inteiro: $valor" // Verifica se é um número inteiro
+        is Double -> "O número é um decimal: $valor" // Verifica se é um Double
+        is String -> "Você digitou um texto: $valor" // Verifica se é uma String
+        in 1..10 -> "Número entre 1 e 10" // Verifica se o valor está dentro da faixa de 1 a 10
+        "Kotlin" -> "Você digitou a linguagem Kotlin!" // Verifica um valor específico
+        else -> "Tipo desconhecido"
+    }
+    println(resultado1)
 }
