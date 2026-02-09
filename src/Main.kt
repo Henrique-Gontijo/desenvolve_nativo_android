@@ -1,46 +1,50 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val idade = 18
-    if (idade < 12) {
-        println("Criança")
-    } else if (idade < 18) {
-        println("Adolescente")
-    } else {
-        println("Adulto")
+    for (i in 1..5) { // De 1 até 5
+        println("Número FOR: $i")
     }
 
     println("\n------------------------------------------------------------\n")
 
-    val numero = 10
-    val resultado = if (numero % 2 == 0) "Par" else "Ímpar"
-    println("O número é $resultado")
+    var contador = 1
+    while (contador <= 5) {
+        println("Número WHILE: $contador")
+        contador++ // Incrementa 1 a cada repetição
+    }
+
 
     println("\n------------------------------------------------------------\n")
 
-    val dia = 3
-    val nomeDoDia = when (dia) {
-        1 -> "Domingo"
-        2 -> "Segunda-feira"
-        3 -> "Terça-feira"
-        4 -> "Quarta-feira"
-        5 -> "Quinta-feira"
-        6 -> "Sexta-feira"
-        7 -> "Sábado"
-        else -> "Dia inválido"
+    for (i in 5 downTo 1) { // Conta de 5 até 1
+        println("Contagem FOR: $i")
     }
-    println("O dia correspondente é: $nomeDoDia")
+    println("Boom! 🚀")
 
     println("\n------------------------------------------------------------\n")
 
-    val valor: Any = "cinco" // Pode ser qualquer tipo de dado
-    val resultado1 = when (valor) {
-        is Int -> "O número é um inteiro: $valor" // Verifica se é um número inteiro
-        is Double -> "O número é um decimal: $valor" // Verifica se é um Double
-        is String -> "Você digitou um texto: $valor" // Verifica se é uma String
-        in 1..10 -> "Número entre 1 e 10" // Verifica se o valor está dentro da faixa de 1 a 10
-        "Kotlin" -> "Você digitou a linguagem Kotlin!" // Verifica um valor específico
-        else -> "Tipo desconhecido"
+    var numero = 5
+    while (numero > 0) {
+        println("Contagem WHILE: $numero")
+        numero-- // Decrementa 1 a cada repetição
     }
-    println(resultado1)
+    println("Lançamento! 🚀")
+
+    println("\n------------------------------------------------------------\n")
+
+    var soma = 0
+    for (i in 1..5) {
+        soma += i // soma = soma + i
+    }
+    println("A soma dos números de 1 a 5 é: $soma")
+
+    println("\n------------------------------------------------------------\n")
+
+    var soma1 = 0
+    var numero1 = 1
+    while (numero1 <= 5) {
+        soma1 += numero1
+        numero1++ // Incrementa o número
+    }
+    println("A soma dos números de 1 a 5 é: $soma1")
 }
