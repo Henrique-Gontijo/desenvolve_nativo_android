@@ -1,81 +1,65 @@
-//private vs public
-class ContaBancaria {
-    var titular: String = "Cliente" // Public (padrão)
-    private var saldo: Double = 1000.0 // Apenas acessível dentro da classe
-    fun exibirSaldo() {
-        println("Saldo: R$$saldo")
-    }
-}
-
-open class Animal(val nome: String) {
-    open fun som() {
-        println("$nome faz um som!")
-    }
-}
-class Cachorro(nome: String) : Animal(nome) {
-    override fun som() {
-        println("$nome late! 🐶")
-    }
-}
-
-class Usuario {
-    var nome: String = "Desconhecido"
-        private set // Só pode ser alterado dentro da classe
-    fun definirNome(novoNome: String) {
-        if (novoNome.isNotBlank()) {
-            nome = novoNome
-        }
-    }
-}
-
-abstract class Forma {
-    abstract fun calcularArea(): Double // Metodo abstrato (obrigatório)
-    fun descricao() {
-        println("Essa é uma forma geométrica.")
-    }
-}
-class Circulo(val raio: Double) : Forma() {
-    override fun calcularArea(): Double {
-        return 3.14 * raio * raio
+fun dividir(a: Int, b: Int): Int {
+    return try {
+        a / b
+    } catch (e: ArithmeticException) {
+        println("Erro: Não é possível dividir por zero!")
+        0 // Retorna um valor padrão
     }
 }
 
 fun main() {
-    val conta = ContaBancaria()
-    println(conta.titular) // ✅ Funciona
+    try {
+        val resultado = 10 / 0 // ERRO: divisão por zero
+        println("Resultado: $resultado")
+    } catch (e: ArithmeticException) {
+        println("Erro: Divisão por zero não permitida!")
+    } finally {
+        println("Finalizando operação.") // Sempre será executado
+    }
 
-    // println(conta.saldo) ❌ ERRO! `saldo` é privado
-    conta.exibirSaldo() // ✅ Metodo acessa `saldo` internamente
-
-    println("\n------------------------------------------------------------\n")
-
-    val animal = Animal("Animal Genérico")
-    val dog = Cachorro("Rex")
-
-    animal.som() // Comportamento da classe pai
-    dog.som() // Polimorfismo: comportamento modificado na subclasse
-
-    println("\n------------------------------------------------------------\n")
-
-    val usuario = Usuario()
-
-    // usuario.nome = "Carlos" ❌ ERRO! (private set)
-    usuario.definirNome("Carlos") // ✅ Metodo altera o nome
-
-    println(usuario.nome) // ✅ Acesso permitido
+    //O bloco try tenta dividir 10 por 0 (o que causa erro).
+    //O catch captura o erro (ArithmeticException) e imprime uma mensagem.
+    //O finally sempre será executado, independentemente do erro.
 
     println("\n------------------------------------------------------------\n")
 
-    val circulo = Circulo(5.0)
-    println("Área do círculo: ${circulo.calcularArea()}")
-    circulo.descricao()
+    val resultado = dividir(10, 0)
+    println("Resultado: $resultado")
 
-    //A classe Forma é abstrata e contém o metodo calcularArea(), que deve ser implementado nas subclasses.
-    //A classe Circulo implementa calcularArea() e retorna a área corretamente.
+    println("\n------------------------------------------------------------\n")
+
+    val numeros = listOf(1, 2, 3)
+    try {
+        println(numeros[5]) // ERRO: índice inválido
+    } catch (e: IndexOutOfBoundsException) {
+        println("Erro: Índice fora dos limites da lista!")
+    }
+
+    println("\n------------------------------------------------------------\n")
+
+    val input = "abc" // Entrada inválida
+    try {
+        val numero = input.toInt() // ERRO: conversão inválida
+        println("Número: $numero")
+    } catch (e: NumberFormatException) {
+        println("Erro: Entrada inválida! Digite um número.")
+    }
+
+    println("\n------------------------------------------------------------\n")
+
+    try {
+        val lista = listOf(1, 2, 3)
+        val numero = "abc".toInt() // ERRO: Conversão inválida
+        println(lista[5]) // ERRO: Índice fora dos limites
+    } catch (e: NumberFormatException) {
+        println("Erro: Conversão de string para número falhou.")
+    } catch (e: IndexOutOfBoundsException) {
+        println("Erro: Índice fora dos limites da lista!")
+    } catch (e: Exception) { // Captura qualquer outro erro
+        println("Erro desconhecido: ${e.message}")
+    }
 
     /*
-
-    println("\n------------------------------------------------------------\n")
 
     println("\n------------------------------------------------------------\n")
 
